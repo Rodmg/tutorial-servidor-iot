@@ -1,0 +1,15 @@
+{
+  "name": "BridgeService",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rodrigo Méndez Gamboa <rmendez@makerlab.mx>",
+  "license": "ISC",
+  "dependencies": {
+    "node-slip": "0.0.2",
+    "serialport": "^2.0.6"
+  }
+}
