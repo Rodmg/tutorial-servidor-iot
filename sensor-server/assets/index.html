@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>IoT app</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+  <!-- Styles  -->
+  <link rel="stylesheet" href="fonts/roboto.css"/>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+  <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+  <link rel="stylesheet" href="styles/app.css"/>
+  <!-- end Styles -->
+
+</head>
+<body ng-app="iotApp">
+
+  <!-- Content -->
+  <div class="no-select relative" layout="column" ng-view layout-fill role="main"></div>
+  <!-- end Content -->
+
+  <!-- Dependencies and Logic -->
+  <!-- Sails socket.io -->
+  <script type="text/javascript" src="js/dependencies/sails.io.js"></script>
+  <!-- UI dependencies -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+  <script src="bower_components/angular-material/angular-material.min.js"></script>
+  <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+  <script src="bower_components/Chart.js/Chart.min.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+  <!-- Program logic -->
+  <script type="text/javascript" src="js/app/Main.js"></script>
+  <script type="text/javascript" src="js/app/Sensors/SensorsController.js"></script>
+  <script type="text/javascript" src="js/app/Sensor/SensorController.js"></script>
+  <!-- end Dependencies and Logic -->
+
+</body>
+</html>

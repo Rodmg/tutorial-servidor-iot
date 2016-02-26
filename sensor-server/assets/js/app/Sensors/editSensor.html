@@ -1,0 +1,26 @@
+<md-dialog aria-label="Editar Sensor" ng-cloak>
+  <form name="editSensorForm">
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <div class="md-dialog-content">
+      <h2 class="md-title">Editar Sensor</h2>
+      <md-input-container class="md-block">
+        <label>Nombre</label>
+        <input md-maxlength="30" required name="name" ng-model="newName">
+        <div ng-messages="editSensorForm.name.$error">
+          <div ng-message="required">Se requiere un nombre.</div>
+          <div ng-message="md-maxlength">El nombre debe de ser de menos de 30 caracteres.</div>
+        </div>
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button class="md-primary" ng-click="answer('cancel')" >
+      Cancelar
+    </md-button>
+    <md-button class="md-primary" ng-click="answer('apply')" style="margin-right:20px;" >
+      Aplicar
+    </md-button>
+  </md-dialog-actions>
+  </form>
+</md-dialog>

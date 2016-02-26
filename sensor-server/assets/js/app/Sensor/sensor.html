@@ -1,0 +1,66 @@
+<!-- Toolbar -->
+<md-toolbar layout="row" class="main-toolbar">
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" ng-click="sctl.go('/sensors')" aria-label="Atrás">
+      <ng-md-icon icon="arrow_back" style="fill: white"></ng-md-icon>
+    </md-button>
+    <h1 class="ng-binding">{{sctl.sensor.name}}</h1>
+    <span flex></span>
+    <md-button class="" aria-label="Editar" ng-click="sctl.toggleGraph()">
+      <span ng-if="sctl.state == 'normal'">GRÁFICA</span>
+      <span ng-if="sctl.state == 'graph'">LISTA</span>
+    </md-button>
+
+  </div>
+</md-toolbar>
+<!-- end Toolbar -->
+
+<!-- Content -->
+<div flex layout="row" class="main-content">
+  
+  <md-content flex ng-show="sctl.state == 'normal'">
+    <md-list>
+      <!-- Controls -->
+      <md-list-item class="md-2-line" ng-repeat="reading in sctl.readings" ng-click="null">
+
+        <div class="md-list-item-text">
+          <h3>{{reading.value}}</h3>
+          <p>{{reading.time}}</p>
+        </div>
+
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+
+    </md-list>
+
+  </md-content>
+
+  <md-content flex ng-show="sctl.state == 'graph'">
+    <div flex layout-padding layout-margin>
+      <canvas class="chart chart-line" chart-data="sctl.graph.data"
+        chart-labels="sctl.graph.labels" chart-legend="true" chart-series="sctl.graph.series">
+      </canvas>
+    </div>
+  </md-content>
+
+  <md-content flex ng-show="sctl.state == 'loading' ">
+    <div flex layout="row" layout-align="center center" style="min-height: 90vh">
+      <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    </div>
+  </md-content>
+
+  <md-content flex ng-show="sctl.state == 'error' ">
+    <div layout="column">
+      <div layout-padding layout="row" layout-align="center center">
+        <h1 class="md-headline" style="text-align: center;">
+          NO HAY COMUNICACIÓN CON EL SERVIDOR
+        </h1>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center" layout-margin layout-padding>
+        <md-button ng-click="sctl.init()" class="md-raised">Reintentar</md-button>
+      </div>
+    </div>
+  </md-content>
+
+</div>
+<!-- end Content -->

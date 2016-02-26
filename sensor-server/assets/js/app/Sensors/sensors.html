@@ -1,0 +1,73 @@
+<!-- Toolbar -->
+<md-toolbar layout="row" class="main-toolbar">
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" ng-click="sctl.toggleList()" aria-label="Mostrar u ocultar lista">
+      <ng-md-icon icon="menu" style="fill: white"></ng-md-icon>
+    </md-button>
+    <h1 class="ng-binding">Sensores</h1>    
+  </div>
+</md-toolbar>
+<!-- end Toolbar -->
+
+<!-- Content -->
+<div flex layout="row" class="main-content">
+  <md-sidenav md-is-locked-open="false" class="md-whiteframe-z2" md-component-id="left" ng-click="sctl.toggleList()" md-swipe-left="sctl.toggleList()">
+    <md-toolbar style="height: 78px;">
+    </md-toolbar>
+    <md-toolbar>
+      <h1 class="md-toolbar-tools">IoT App</h1>
+    </md-toolbar>
+    <md-list>
+      <md-list-item ng-click="sctl.go('sensors')">
+        <ng-md-icon icon="signal_wifi_3_bar" style="fill: grey; padding-top: 14px; padding-right: 14px;" size="24"></ng-md-icon>
+        <p>Sensores</p>
+      </md-list-item>
+      <md-divider></md-divider>
+    </md-list>
+  </md-sidenav>
+
+  <md-content flex ng-show="sctl.state == 'normal'">
+    <md-list>
+      <!-- Controls -->
+      <md-list-item class="md-2-line" ng-repeat="sensor in sctl.sensors" ng-click="null">
+
+        <div class="md-list-item-text">
+          <h3>{{sensor.name}}</h3>
+          <p>{{sensor.longAddress}}</p>
+        </div>
+
+        <md-button class="md-primary md-icon-button" aria-label="Ver" ng-click="sctl.onClick($event, sensor)">
+          <ng-md-icon icon="search" style="fill: grey"></ng-md-icon>
+        </md-button>
+        <md-button class="md-primary md-icon-button" aria-label="Editar" ng-click="sctl.edit(sensor)">
+          <ng-md-icon icon="edit" style="fill: grey"></ng-md-icon>
+        </md-button>
+
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+
+    </md-list>
+
+  </md-content>
+
+  <md-content flex ng-show="sctl.state == 'loading' ">
+    <div flex layout="row" layout-align="center center" style="min-height: 90vh">
+      <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    </div>
+  </md-content>
+
+  <md-content flex ng-show="sctl.state == 'error' ">
+    <div layout="column">
+      <div layout-padding layout="row" layout-align="center center">
+        <h1 class="md-headline" style="text-align: center;">
+          NO HAY COMUNICACIÓN CON EL SERVIDOR
+        </h1>
+      </div>
+      <div class="md-actions" layout="row" layout-align="center center" layout-margin layout-padding>
+        <md-button ng-click="sctl.init()" class="md-raised">Reintentar</md-button>
+      </div>
+    </div>
+  </md-content>
+
+</div>
+<!-- end Content -->
